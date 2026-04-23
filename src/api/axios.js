@@ -1,7 +1,12 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8080",
+  // This looks for a variable in your .env file; defaults to localhost if not found
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:8080",
+  headers: {
+    // This tells Localtunnel to skip the "Friendly Reminder" warning page
+    "Bypass-Tunnel-Reminder": "true",
+  },
 });
 
 // Add interceptor
